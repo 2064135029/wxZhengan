@@ -1,0 +1,39 @@
+<!-- index.wxml -->
+<view class="container">
+    <view class="content">
+        <image class="logo" src="/images/logo.png" />
+        <view class="title">
+            <image class="fw" src="/images/ic_fw.png" />
+            <text class="tin">
+                王金成
+                <br />
+                1264临证法
+                <br />
+                中医诊疗问卷
+                <br />
+            </text>
+        </view>
+        <view class="hadle">
+            <!-- <van-button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" type="primary">绑定手机</van-button> -->
+            <van-button class="leftBtn" wx:if="{{needLogin}}" bindtap="getUserProfile" type="primary">
+                微信登录
+            </van-button>
+            <van-button bindtap="navToQueInfo" class="leftBtn" wx:else type="primary">
+                进入问卷
+            </van-button>
+            <van-button bindtap="navToRecord" class="rightBtn">查看记录</van-button>
+        </view>
+    </view>
+    <view class="footer">
+        <text>王金城老师1264临证法相关信息请关注：</text>
+        <view class="imgWarp">
+            <view class="item">
+                <image class="wxcode" src="/images/wx_code.png" />
+                <text>正安公益公众号</text>
+            </view>
+            <view class="item">
+                <image class="wxcode" src="/images/ic_code.png" />
+            </view>
+        </view>
+    </view>
+</view>

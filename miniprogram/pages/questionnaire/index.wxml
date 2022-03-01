@@ -1,0 +1,44 @@
+<view class="container">
+    <view wx:if="{{!isFinshAnswer}}" class="queWrap">
+        <view class="title">
+            <image class="logo" src="/images/logo.png" />
+            <view class="t">
+                <text>王金城1264临证法</text>
+                <text>中医诊疗问卷</text>
+            </view>
+        </view>
+        <text class="tin">请根据当前身体状况回答以下问题(共{{topicData.length}}题)：</text>
+        <view class="topic">
+            <view wx:for="{{topicData}}" wx:key="id">
+                <view class="fitem" wx:if="{{item.type != 3}}">
+                    <text class="label">{{index + 1}}.{{item.title}}</text>
+                    <van-radio-group bind:change="onChange" data-item="{{item}}">
+                        <van-radio wx:for="{{item.sub}}" wx:for-item="itemSub" wx:for-index="idx" wx:key="id" use-icon-slot name="{{itemSub}}">
+                            {{itemSub.title}}
+                            <image class="icon" slot="icon" src="{{ itemSub.active ? icon.active : icon.normal }}" />
+                        </van-radio>
+                    </van-radio-group>
+                </view>
+                <view class="fitem" wx:else>
+                    <text class="label">{{index + 1}}.{{item.title}}</text>
+                    <van-field value="{{item.inputValue}}" bind:change="onChange" type="textarea" placeholder="请输入" autosize border="{{ true }}" data-item="{{item}}" />
+                </view>
+            </view>
+        </view>
+        <view class="com">
+            <van-button bindtap="onFinsh" size="small" type="primary">完成</van-button>
+        </view>
+    </view>
+    <view wx:else class="queWrap">
+        <view class="title">
+            <image class="logo" src="/images/logo.png" />
+        </view>
+        <view class="summarize">
+            <text class="text">恭喜你！完成了王金城老师1264临证法诊疗问卷。</text>
+            <text class="text">点击以下链接获取中医诊疗报告</text>
+        </view>
+        <view class="title">
+            <image bindtap="navToResult" class="logo" src="/images/ic_code.png" />
+        </view>
+    </view>
+</view>

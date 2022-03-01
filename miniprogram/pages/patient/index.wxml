@@ -1,0 +1,70 @@
+<view class="container">
+    <view class="patientWrap">
+        <view class="fitem">
+            <text class="label">*性别:</text>
+            <van-radio-group direction="horizontal" value="{{ radio }}" bind:change="onGenderChange">
+                <van-radio use-icon-slot value="{{ genderRadio }}" name="1">
+                    男
+                    <image class="icon" slot="icon" src="{{ genderRadio === '1' ? icon.active : icon.normal }}" />
+                </van-radio>
+                <van-radio use-icon-slot value="{{ genderRadio }}" name="2">
+                    女
+                    <image class="icon" slot="icon" src="{{ genderRadio === '2' ? icon.active : icon.normal }}" />
+                </van-radio>
+            </van-radio-group>
+        </view>
+        <view class="fitem">
+            <text class="label">*年龄:</text>
+            <van-radio-group direction="horizontal" value="{{ radio }}" bind:change="onChange">
+                <van-radio use-icon-slot value="{{ radio }}" name="1">
+                    0-12岁
+                    <text decode="{{true}}">&ensp;</text>
+                    <image class="icon" slot="icon" src="{{ radio === '1' ? icon.active : icon.normal }}" />
+                </van-radio>
+                <van-radio icon-size="30px" use-icon-slot value="{{ radio }}" name="2">
+                    13-18岁
+                    <image class="icon" slot="icon" src="{{ radio === '2' ? icon.active : icon.normal }}" />
+                </van-radio>
+                <van-radio icon-size="30px" use-icon-slot value="{{ radio }}" name="3">
+                    19-25岁
+                    <image class="icon" slot="icon" src="{{ radio === '3' ? icon.active : icon.normal }}" />
+                </van-radio>
+                <van-radio icon-size="30px" use-icon-slot value="{{ radio }}" name="4">
+                    26-35岁
+                    <image class="icon" slot="icon" src="{{ radio === '4' ? icon.active : icon.normal }}" />
+                </van-radio>
+                <van-radio icon-size="30px" use-icon-slot value="{{ radio }}" name="5">
+                    36-45岁
+                    <image class="icon" slot="icon" src="{{ radio === '5' ? icon.active : icon.normal }}" />
+                </van-radio>
+                <van-radio icon-size="30px" use-icon-slot value="{{ radio }}" name="6">
+                    46-55岁
+                    <image class="icon" slot="icon" src="{{ radio === '6' ? icon.active : icon.normal }}" />
+                </van-radio>
+                <van-radio icon-size="30px" use-icon-slot value="{{ radio }}" name="7">
+                    56-65岁
+                    <image class="icon" slot="icon" src="{{ radio === '7' ? icon.active : icon.normal }}" />
+                </van-radio>
+                <van-radio icon-size="30px" use-icon-slot value="{{ radio }}" name="8">
+                    66-75岁
+                    <image class="icon" slot="icon" src="{{ radio === '8' ? icon.active : icon.normal }}" />
+                </van-radio>
+                <van-radio icon-size="30px" use-icon-slot value="{{ radio }}" name="9">
+                    76-85岁
+                    <image class="icon" slot="icon" src="{{ radio === '9' ? icon.active : icon.normal }}" />
+                </van-radio>
+                <van-radio icon-size="30px" use-icon-slot value="{{ radio }}" name="10">
+                    85岁以上
+                    <image class="icon" slot="icon" src="{{ radio === '10' ? icon.active : icon.normal }}" />
+                </van-radio>
+            </van-radio-group>
+        </view>
+        <view class="fitem">
+            <van-field bind:change="onTextNameChange" title-width="3.2em" value="{{ name }}" label="姓名" placeholder="请输入姓名" />
+            <van-field bind:change="onTextPhoneChange" title-width="3.2em" value="{{ phone }}" label="电话" placeholder="请输入电话" />
+        </view>
+        <view class="com">
+            <van-button bindtap="commitData" size="small" type="primary">提交</van-button>
+        </view>
+    </view>
+</view>

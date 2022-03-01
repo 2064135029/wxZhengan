@@ -1,0 +1,8 @@
+<view class="container">
+    <view class="infoWrap">
+        <image class="logo" src="/images/logo.png" />
+        <text class="title">{{baseInfo.title}}</text>
+        <rich-text class="showContent" space="ensp" nodes="{{baseInfo.content}}"></rich-text>
+        <van-button bindtap="onNext" class="nextBtn" size="small">下一步</van-button>
+    </view>
+</view>
