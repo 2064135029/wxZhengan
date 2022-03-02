@@ -57,6 +57,9 @@ Page({
               doSuccess: (r: any) => {
                 // console.log(res);
                 wx.setStorageSync("token", r.data.openid);
+                this.setData({
+                  needLogin: false,
+                });
               },
               complete: () => {},
             });
