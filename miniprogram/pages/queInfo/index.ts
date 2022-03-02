@@ -1,6 +1,7 @@
 // pages/queInfo/index.ts
 const req = require("../../utils/request");
 // import { request } from "../../utils/request";
+const app = getApp<any>();
 
 Page({
   /**
@@ -26,6 +27,7 @@ Page({
         this.setData({
           baseInfo: res.data,
         });
+        app.globalData.queInfo = res.data;
       },
       complete: () => {},
     });
@@ -66,9 +68,9 @@ Page({
    */
   onShareAppMessage() {},
 
-  onNext(){
+  onNext() {
     wx.navigateTo({
       url: "/pages/patient/index",
     });
-  }
+  },
 });

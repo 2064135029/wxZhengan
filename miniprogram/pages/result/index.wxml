@@ -15,11 +15,11 @@
                 </text>
             </view>
             <view class="echartCav">
-                <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
+                <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}" bind:init="echartInit" data-record="{{recordData}}"></ec-canvas>
             </view>
             <view>
                 <text decode="{{true}}">
-                    &emsp;&emsp;从上图可以看出，您在中气虚、阳虚、阴虚和营卫不和这四个类型中得分较高。
+                    &emsp;&emsp;从上图可以看出，您在中{{sumInfo}}的类型中得分较高。
 点击以下链接，进行公益捐赠，获得更多详细报告。
                 </text>
             </view>

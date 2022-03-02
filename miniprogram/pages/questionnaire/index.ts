@@ -11,7 +11,7 @@ Page({
       normal: "/images/no.png",
     },
     topicData: [],
-    isFinshAnswer: true,
+    isFinshAnswer: false,
   },
 
   /**
@@ -148,13 +148,45 @@ Page({
       });
       return;
     }
+
     this.setData({
       isFinshAnswer: true,
     });
   },
-  navToResult(){
-    wx.navigateTo({
-      url: '/pages/result/index'
-    })
-  }
+  navToResult() {
+    let ast = [];
+    this.data.topicData.forEach((tt: any) => {
+      tt.sub.forEach((tk: any) => {
+        ast.push({
+          idCate: tk.id_cate,
+          idSubClass: tk.id_subclass,
+          grade: tk.grade,
+        });
+      });
+    });
+
+    const reqParams = {
+      queId: getApp().globalData.queInfo.id,
+      patientId: getApp().globalData.patientInfo.id,
+      answerss: ast,
+    };
+
+    req.request({
+      url: "/wx/user/calculate",
+      params: reqParams,
+      doFail: () => {},
+      doSuccess: (sult: any) => {
+        console.log(sult);
+        wx.navigateTo({
+          url: "/pages/result/index",
+          success: function (res) {
+            res.eventChannel.emit("acceptDataFromQue", {
+              data: sult.data,
+            });
+          },
+        });
+      },
+      complete: () => {},
+    });
+  },
 });

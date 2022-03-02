@@ -10,18 +10,18 @@ function initChart(canvas, width, height, dpr) {
     devicePixelRatio: dpr, // new
   });
   canvas.setChart(chart);
-
+  // console.log(recordData);
   var option = {
     xAxis: {
       type: "category",
-      data: ["气虚", "y", "Wed", "Thu", "Fri", "Sat", "Sun"],
+      data: [],
     },
     yAxis: {
       type: "value",
     },
     series: [
       {
-        data: [120, 200, 150, 80, 70, 110, 130],
+        data: [],
         type: "bar",
         showBackground: true,
         backgroundStyle: {
@@ -30,7 +30,7 @@ function initChart(canvas, width, height, dpr) {
       },
     ],
   };
-
+  // option.series[0].data = recordData;
   chart.setOption(option);
   return chart;
 }
@@ -41,17 +41,63 @@ Page({
    */
   data: {
     patientInfo: {
-      name: "吴**",
+      name: "***",
     },
+    sumInfo: "",
     ec: {
       onInit: initChart,
     },
+    echartCateData: [],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad() {},
+  onLoad() {
+    const eventChannel = this.getOpenerEventChannel();
+    const that = this;
+    if (eventChannel) {
+      eventChannel.on("acceptDataFromQue", function (data) {
+        console.log(data.data);
+        const echartCateData = data.data.echartCateData;
+        let sum = [];
+        const d = echartCateData.map((i) => {
+          sum.push(i.name);
+          return i.grade;
+        });
+        // console.log(d);
+        that.setData({
+          name: getApp().globalData.patientInfo.name,
+          echartCateData: echartCateData,
+          sumInfo: sum.join("、"),
+        });
+        var option = {
+          xAxis: {
+            type: "category",
+            data: [],
+          },
+          yAxis: {
+            type: "value",
+          },
+          series: [
+            {
+              data: d,
+              type: "bar",
+              showBackground: true,
+              backgroundStyle: {
+                color: "rgba(180, 180, 180, 0.2)",
+              },
+            },
+          ],
+        };
+        setTimeout(() => {
+          // console.log(chart);
+          chart.setOption(option);
+        }, 1000);
+        // chart.setOption(option);
+      });
+    }
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -87,4 +133,10 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage() {},
+
+  echartInit(e) {
+    console.log(e);
+    let recordData = e.target.dataset.record;
+    initChart(e.detail.canvas, e.detail.width, e.detail.height, recordData);
+  },
 });

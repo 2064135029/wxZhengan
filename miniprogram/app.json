@@ -1,12 +1,12 @@
 {
   "pages": [
-    "pages/resultDetail/index",
+    "pages/index/index",
     "pages/result/index",
     "pages/questionnaire/index",
-    "pages/index/index",
     "pages/record/index",
     "pages/patient/index",
-    "pages/queInfo/index"
+    "pages/queInfo/index",
+    "pages/resultDetail/index"
    
   ],
   "window": {

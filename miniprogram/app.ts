@@ -1,8 +1,9 @@
-const req  = require('./utils/request');
+const req = require("./utils/request");
 // app.ts
-App<IAppOption>({
+App<any>({
   globalData: {
-   
+    queInfo: {},
+    patientInfo: {},
   },
   onLaunch() {
     // 展示本地存储能力
@@ -28,4 +29,4 @@ App<IAppOption>({
     //   },
     // })
   },
-})
+});

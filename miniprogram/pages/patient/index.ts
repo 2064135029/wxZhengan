@@ -128,6 +128,7 @@ Page({
         wx.navigateTo({
           url: "/pages/questionnaire/index",
           success: function (res) {
+            getApp().globalData.patientInfo = sult.data;
             res.eventChannel.emit("acceptDataFromOpenerPage", {
               data: sult.data,
             });
