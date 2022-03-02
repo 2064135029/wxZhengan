@@ -1,0 +1,21 @@
+<view class="container">
+    <view class="detail">
+        <view class="title">
+            <image class="logo" src="/images/logo.png" />
+        </view>
+        <view>
+            尊敬的
+            <text class="name" space="nbsp">{{patientInfo.name}}</text>
+            女士/先生：
+        </view>
+        <view>
+            <text decode="{{true}}">&emsp;&emsp;感谢您的爱心和捐赠！以下是您的体质分析详细报告：</text>
+        </view>
+        <view class="showCon">
+            <text decode="{{true}}">&emsp;&emsp;从上图可以看出</text>
+        </view>
+        <view>
+            <text decode="{{true}}">&emsp;&emsp;如果想要得到更精准的诊疗服务，正安公益的义工医生将为弱势群体提供免费的在线诊断建议。</text>
+        </view>
+    </view>
+</view>

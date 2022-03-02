@@ -1,11 +1,13 @@
 {
   "pages": [
+    "pages/resultDetail/index",
     "pages/result/index",
     "pages/questionnaire/index",
     "pages/index/index",
     "pages/record/index",
     "pages/patient/index",
     "pages/queInfo/index"
+   
   ],
   "window": {
     "backgroundTextStyle": "light",

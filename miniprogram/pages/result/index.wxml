@@ -1,18 +1,31 @@
-<view class="container">
-    <view class="resultWrap">
-        <view class="title">
-            <image class="logo" src="/images/logo.png" />
+<view style="height: auto" class="container">
+    <scroll-view>
+        <view class="resultWrap">
+            <view class="title">
+                <image class="logo" src="/images/logo.png" />
+            </view>
+            <view>
+                尊敬的
+                <text class="name" space="nbsp">{{patientInfo.name}}</text>
+                女士/先生：
+            </view>
+            <view>
+                <text decode="{{true}}">
+                    &emsp;&emsp;根据王金城【1264临证法】原理，结合您对上述27个问题的回答，你的体质在1264体系中的各项得分如下
+                </text>
+            </view>
+            <view class="echartCav">
+                <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
+            </view>
+            <view>
+                <text decode="{{true}}">
+                    &emsp;&emsp;从上图可以看出，您在中气虚、阳虚、阴虚和营卫不和这四个类型中得分较高。
+点击以下链接，进行公益捐赠，获得更多详细报告。
+                </text>
+            </view>
+            <view style="margin-top: 40rpx" class="title">
+                <image bindtap="navToResult" class="logo" src="/images/ic_code.png" />
+            </view>
         </view>
-        <view>
-            尊敬的
-            <text class="name" space="nbsp">{{patientInfo.name}}</text>
-            女士/先生：
-        </view>
-        <view>
-            <text decode="{{true}}">
-                &emsp;&emsp;根据王金城【1264临证法】原理，结合您对上述27个问题的回答，你的体质在1264体系中的各项得分如下
-            </text>
-        </view>
-    </view>
-    <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
+    </scroll-view>
 </view>
