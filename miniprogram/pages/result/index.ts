@@ -48,6 +48,18 @@ Page({
       onInit: initChart,
     },
     echartCateData: [],
+    colors: [
+      "#ff7575",
+      "#66B3FF",
+      "#FF77FF",
+      "#00FFFF",
+      "#FF9224",
+      "#81C0C0",
+      "#CA8EC2",
+      "#467500",
+      "#6F00D2",
+      "#EBD3E8",
+    ],
   },
 
   /**
@@ -60,10 +72,21 @@ Page({
       eventChannel.on("acceptDataFromQue", function (data) {
         console.log(data.data);
         const echartCateData = data.data.echartCateData;
+
+        const newEs =
+          echartCateData.length < 10
+            ? echartCateData
+            : echartCateData.splice(0, 9);
         let sum = [];
-        const d = echartCateData.map((i) => {
+        const d = newEs.map((i, index) => {
           sum.push(i.name);
-          return i.grade;
+          return {
+            name: i.name,
+            value: i.grade,
+            itemStyle: {
+              color: i.color,
+            },
+          };
         });
         // console.log(d);
         that.setData({
